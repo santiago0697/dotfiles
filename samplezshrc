@@ -1,0 +1,116 @@
+# Set up the prompt
+
+#autoload -Uz promptinit
+#promptinit
+#prompt adam1
+
+#setopt histignorealldups sharehistory
+
+# Use emacs keybindings even if our EDITOR is set to vi
+#bindkey -e
+
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+#HISTSIZE=1000
+#SAVEHIST=1000
+#HISTFILE=~/.zsh_history
+
+# Use modern completion system
+#autoload -Uz compinit
+#compinit
+
+#zstyle ':completion:*' auto-description 'specify: %d'
+#zstyle ':completion:*' completer _expand _complete _correct _approximate
+#zstyle ':completion:*' format 'Completing %d'
+#zstyle ':completion:*' group-name ''
+#zstyle ':completion:*' menu select=2
+#eval "$(dircolors -b)"
+#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+#zstyle ':completion:*' list-colors ''
+#zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+#zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+#zstyle ':completion:*' menu select=long
+#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+#zstyle ':completion:*' use-compctl false
+#zstyle ':completion:*' verbose true
+
+#zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+#zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# Enable prompt functions
+setopt PROMPT_SUBST
+
+# Directory movement
+alias cdh="cd $HOME"
+alias cdw="cd $HOME/workspace"
+alias ..="cd .."
+
+# Directory listing
+alias ll="ls -la"
+
+# Git aliases
+alias gs="git status -sb"
+alias gd="git diff"
+# alias gc="git commit"
+alias gck="git checkout"
+
+# SSH Connections
+alias sshxdebug="ssh -R 9021:localhost:9021 psscorrea@dev21.efectoled.com"
+alias sshdev="ssh psscorrea@dev21.efectoled.com"
+
+# Functions
+function docker_list {
+	containers=$(docker ps | awk '{if (NR!=1) print $1 ": " $(NF)}')
+
+	echo "Containers"
+	echo $containers
+}
+
+function gc {
+	if [ -z "$1" ]; then
+		git commit
+	else
+		git commit -m "$1"
+	fi
+}
+
+_dir_movement_fzf() {
+	dir=$(find * -maxdepth 0 -type d -print | fzf-tmux)
+	cd "$dir"
+}
+
+_reverse_search() {
+	local selected_command=$(fc -rl 1 | awk '{$1="";print substr($0,2)}' | fzf-tmux)
+	LBUFFER=$selected_command
+}
+
+function git_prompt_info {
+	inside_git_repo="$(git rev-parse --is-inside-work-tree 2>/dev/null)"
+
+	if [ "$inside_git_repo" ]; then
+		current_branch=$(git branch --show-current)
+		print -P "(%{%F{yellow}%}$current_branch%{%f%})"
+	else
+		echo ""
+	fi
+}
+
+function prompt_exit_code {
+	local EXIT="$?"
+
+	if [ $EXIT -eq 0 ]; then
+		echo -n green
+	else
+		echo -n red
+	fi
+}
+
+
+# Key bindings
+zle -N _dir_movement_fzf
+bindkey '^h' _dir_movement_fzf
+
+zle -N _reverse_search
+bindkey '^r' _reverse_search
+
+# Prompt
+PROMPT='%B%F{$(prompt_exit_code)}%n@%M:%f%b %F{blue}%~%f $(git_prompt_info)$ '
