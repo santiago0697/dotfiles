@@ -172,29 +172,25 @@ alias ..="cd .."
 alias ll="ls -la"
 
 # Edit commonfiles
-alias hosts="sudo -E vim /etc/hosts"
-alias nvimrc="vim ~/.config/nvim/init.vim"
-alias zshrc="vim ~/.zshrc"
-alias zimrc="vim ~/.zimrc"
+alias hosts="sudo -E nvim /etc/hosts"
+alias nvimrc="nvim ~/.config/nvim/init.vim"
+alias zshrc="nvim ~/.zshrc"
+alias zimrc="nvim ~/.zimrc"
 alias tmuxconf="vim ~/.tmux.conf"
 
-# Git aliases
-alias gs="git status -sb"
-#alias gd="git diff"
-# alias gc="git commit"
-alias gck="git checkout"
+alias branchlist="git for-each-ref --sort='-authordate' --format='%1B[0;34m%(refname:short)%1B[m ===> %1B[1;35m%(subject)' refs/heads | sed -e 's-refs/heads/--'"
+alias lth='cd ~/workspace/latiendahome'
 
-# SSH Connections
-alias sshxdebug="ssh -R 9021:localhost:9021 psscorrea@dev21.efectoled.com"
-alias sshdev="ssh psscorrea@dev21.efectoled.com"
-alias sshtest="ssh prsmcsltest@dev50.efectoled.com"
+function branches() {
+  local branch_name=$(branchlist | fzf --ansi -m)
+
+  if [[ $branch_name ]]; then
+    echo $branch_name | awk '{print $1}' | xargs git checkout
+  fi
+}
+
 
 # Functions
-function gd {
-	preview="git diff $@ --color=always -- {-1}"
-	git diff $@ --name-only | fzf -m --ansi --preview $preview
-	return true
-}
 
 function docker_list {
 	containers=$(docker ps | awk '{if (NR!=1) print $1 ": " $(NF)}')
