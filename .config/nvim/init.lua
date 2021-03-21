@@ -1,0 +1,32 @@
+require('plugins')
+require('keymappings')
+require('settings')
+require('colorscheme')
+
+-- Plugins configurations
+-- require('nv-vimairline')
+require('nv-galaxyline')
+require('nv-barbar')
+require('nv-nvimtree')
+require('nv-startify')
+require('nv-telescope')
+require('nv-comments')
+require('nv-gitsigns')
+require('nv-gitblame')
+require('nv-nvim-autopairs')
+require('nv-quickscope')
+require('nv-vim-rooter')
+require('nv-matchup')
+require('nv-utils')
+require('nv-colorizer')
+-- require('nv-treesitter')
+
+vim.cmd('source ~/.config/nvim/vimscripts/functions.vim')
+-- LSP / Autocomplete
+require('nv-compe')
+require('nv-lspkind')
+require('lsp')
+require('lsp.js-ts-ls')
+require('lsp.css-ls')
+require('lsp.php-ls')
+
