@@ -28,5 +28,6 @@ require('nv-lspkind')
 require('lsp')
 require('lsp.js-ts-ls')
 require('lsp.css-ls')
+require('lsp.html-ls')
 require('lsp.php-ls')
 
