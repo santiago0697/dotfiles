@@ -26,9 +26,10 @@ nv_utils.define_augroups({
         {
             'TextYankPost', '*',
             'lua require(\'vim.highlight\').on_yank({higroup = \'Search\', timeout = 200})'
-        }, {'BufWinEnter', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
-        {'BufRead', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
-        {'BufNewFile', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
+        },
+        -- {'BufWinEnter', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
+        -- {'BufRead', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
+        -- {'BufNewFile', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
     }
 })
 

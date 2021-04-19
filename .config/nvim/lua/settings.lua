@@ -8,10 +8,12 @@ vim.o.splitbelow=true                          --Horizontal splits will automati
 vim.o.splitright=true                          --Vertical splits will automatically be to the right
 vim.o.termguicolors=true
 vim.o.t_Co="256"                            --Support 256 colors
-vim.cmd('set ts=4')                           --Insert 4 spaces for a tab
-vim.cmd('set sw=4')                        --Change the number of space characters inserted for indentation
-vim.bo.expandtab=true                           --Converts tabs to spaces
-vim.bo.smartindent=true                         --Makes indenting smart
+vim.cmd('set tabstop=4')                           --Insert 4 spaces for a tab
+vim.cmd('set softtabstop=4')
+vim.cmd('set shiftwidth=4')                        --Change the number of space characters inserted for indentation
+vim.cmd('set expandtab')
+vim.cmd('set autoindent')
+-- vim.cmd('set smartindent')
 vim.wo.number = true				-- show line number
 vim.wo.relativenumber = true			-- show relative line number
 vim.wo.cursorline=true                          --Enable highlighting of the current line
