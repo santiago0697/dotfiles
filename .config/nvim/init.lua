@@ -19,7 +19,7 @@ require('nv-vim-rooter')
 require('nv-matchup')
 require('nv-utils')
 require('nv-colorizer')
--- require('nv-treesitter')
+require('nv-treesitter')
 
 vim.cmd('source ~/.config/nvim/vimscripts/functions.vim')
 -- LSP / Autocomplete

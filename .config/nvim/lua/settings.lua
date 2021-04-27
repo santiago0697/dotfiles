@@ -13,7 +13,9 @@ vim.cmd('set softtabstop=4')
 vim.cmd('set shiftwidth=4')                        --Change the number of space characters inserted for indentation
 vim.cmd('set expandtab')
 vim.cmd('set autoindent')
+vim.cmd('set autoread')						-- Autoreload files
 -- vim.cmd('set smartindent')
+-- vim.o.autoindent = true
 vim.wo.number = true				-- show line number
 vim.wo.relativenumber = true			-- show relative line number
 vim.wo.cursorline=true                          --Enable highlighting of the current line
@@ -23,6 +25,5 @@ vim.wo.signcolumn="yes"                      --Always show the signcolumn, other
 vim.o.updatetime=300                      --Faster completion
 -- vim.o.timeoutlen=100                      --By default timeoutlen is 1000 ms
 vim.o.clipboard="unnamedplus"               --Copy paste between vim and everything else
-vim.cmd('set autoread')						-- Autoreload files
 vim.cmd('nnoremap n nzzzv')
 vim.cmd('nnoremap N Nzzzv')

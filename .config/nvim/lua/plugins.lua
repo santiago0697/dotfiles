@@ -18,18 +18,19 @@ return require('packer').startup(function(use)
     use 'moll/vim-bbye'
     use  'mhinz/vim-startify'
     use 'terrortylor/nvim-comment'
-    use 'windwp/nvim-autopairs'
     use 'unblevable/quick-scope'
     use 'airblade/vim-rooter'
     use 'andymass/vim-matchup'
     use 'tpope/vim-sleuth'
     use 'norcalli/nvim-colorizer.lua'
+    use 'windwp/nvim-autopairs'
 
     -- Treesitter
-    -- use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    -- use 'nvim-treesitter/nvim-treesitter'
+    use 'nvim-treesitter/playground'
     -- use 'nvim-treesitter/nvim-treesitter-refactor'
-    -- use 'nvim-treesitter/playground'
-    -- use 'p00f/nvim-ts-rainbow'
+    use 'p00f/nvim-ts-rainbow'
 
     -- Status Line and Bufferline
     use 'glepnir/galaxyline.nvim'
