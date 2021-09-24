@@ -20,6 +20,10 @@ vim.cmd('nnoremap <silent> <F2> :Lspsaga rename<CR>')
 vim.cmd('nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>')
 vim.cmd('nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>')
 
+-- Terminal
+vim.cmd('nnoremap <silent> <A-t> :Lspsaga open_floaterm<CR>')
+vim.cmd('tnoremap <silent> <A-t> <C-\\><C-n>:Lspsaga close_floaterm<CR>')
+
 local function documentHighlight(client, bufnr)
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then

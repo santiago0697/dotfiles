@@ -21,7 +21,7 @@ return require('packer').startup(function(use)
     use 'unblevable/quick-scope'
     use 'airblade/vim-rooter'
     use 'andymass/vim-matchup'
-    use 'tpope/vim-sleuth'
+    -- use 'tpope/vim-sleuth'
     use 'norcalli/nvim-colorizer.lua'
     use 'windwp/nvim-autopairs'
 
