@@ -1,0 +1,61 @@
+# Powerlevel10k "rainbow" recreation — fish + Ghostty OneHalfDark
+# Left:   directory (blue)  git (green) ❯
+# Right: node/go/python versions
+# (right side renders via fish_right_prompt → `starship prompt --right`)
+
+format = "[](fg:blue)$directory$git_branch$git_status${custom.close_repo}${custom.close_plain} "
+right_format = "$nodejs$golang$python"
+add_newline = false
+
+palette = "onehalfdark"
+
+[palettes.onehalfdark]
+bg = "#282c34"
+fg = "#dcdfe4"
+blue = "#61afef"
+green = "#98c379"
+yellow = "#e5c07b"
+red = "#e06c75"
+purple = "#c678dd"
+cyan = "#56b6c2"
+
+[directory]
+style = "bold fg:bg bg:blue"
+format = "[ $path ]($style)"
+truncation_length = 3
+read_only = " 󰌾 "
+read_only_style = "fg:red bg:blue"
+
+[git_branch]
+symbol = " "
+style = "fg:bg bg:green"
+format = "[](bg:green fg:blue)[ $symbol$branch ]($style)"
+
+[git_status]
+style = "fg:bg bg:green"
+format = '[$all_status$ahead_behind ]($style)'
+
+[nodejs]
+symbol = " "
+style = "fg:bg bg:green"
+format = "[](fg:green)[ $symbol$version ]($style) "
+
+[golang]
+symbol = " "
+style = "fg:bg bg:cyan"
+format = "[](fg:cyan)[ $symbol$version ]($style) "
+
+[python]
+symbol = " "
+style = "fg:bg bg:purple"
+format = "[](fg:purple)[ $symbol$version ]($style) "
+# Closing arrow: green inside repos, blue everywhere else
+[custom.close_repo]
+command = "true"
+when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+format = "[\ue0b0](fg:green)"
+
+[custom.close_plain]
+command = "true"
+when = "! git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+format = "[\ue0b0](fg:blue)"
