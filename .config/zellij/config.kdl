@@ -7,3 +7,11 @@ mouse_mode true
 
 // Start in locked mode to avoid accidentally triggering a pane mode
 default_mode "locked"
+
+// Switch tabs with Shift+Left/Right arrow (like tmux S-Left/S-Right)
+keybinds {
+    normal {
+        bind "Shift Left" { SwitchToMode "Tab"; GoToPreviousTab; }
+        bind "Shift Right" { SwitchToMode "Tab"; GoToNextTab; }
+    }
+}
