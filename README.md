@@ -72,11 +72,12 @@ size.
 file/dir search in `config.fish` so Ctrl-T / Alt-C respect `.gitignore`.
 
 `tmux` is the terminal multiplexer (Catppuccin theme via TPM), configured in
-`~/.tmux.conf`.
+`~/.tmux.conf`. Prefix `Ctrl-b` (secondary `Ctrl-s`). TPM plugins:
+`tmux-sensible`, catppuccin.
 
-`tmux` is the terminal multiplexer (Catppuccin theme via TPM), configured in
-`~/.tmux.conf`. TPM plugins: `tmux-sensible`, catppuccin. Prefix `Ctrl-b`
-(secondary `Ctrl-s`).
+**Workspaces:** sessions group tabs by project/directory. `prefix+F` runs the
+`tmws` fzf switcher (fish function) — pick an existing session to jump, or
+"▸ new workspace" to create one from the current directory.
 
 ## Layout
 
@@ -87,7 +88,7 @@ file/dir search in `config.fish` so Ctrl-T / Alt-C respect `.gitignore`.
 ├── fish/
 │   ├── config.fish                # brew, PATH, volta, pnpm, orbstack, zoxide, starship, bat, fzf/fd
 │   ├── conf.d/aliases.fish        # ld/lg/ls/eza + omz-style git abbreviations
-│   └── functions/git_main_branch.fish
+│   └── functions/                 # git_main_branch.fish, tmws.fish (fzf workspace switcher)
 ├── starship.toml                  # Catppuccin Mocha prompt
 └── opencode/
     ├── tui.json                   # theme selection
@@ -118,6 +119,7 @@ cp .config/fish/config.fish ~/.config/fish/config.fish
 mkdir -p ~/.config/fish/conf.d ~/.config/fish/functions
 cp .config/fish/conf.d/aliases.fish ~/.config/fish/conf.d/
 cp .config/fish/functions/git_main_branch.fish ~/.config/fish/functions/
+cp .config/fish/functions/tmws.fish ~/.config/fish/functions/
 cp .config/starship.toml ~/.config/starship.toml
 mkdir -p ~/.config/opencode/themes
 cp .config/opencode/tui.json ~/.config/opencode/
