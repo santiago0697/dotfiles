@@ -1,0 +1,9 @@
+// Zellij — terminal multiplexer (replaces tmux)
+// Theme: Catppuccin Macchiato (see themes/catppuccin.kdl)
+theme "catppuccin-macchiato"
+
+// Mouse support (tmux had no mouse; zellij defaults off)
+mouse_mode true
+
+// Start in locked mode to avoid accidentally triggering a pane mode
+default_mode "locked"

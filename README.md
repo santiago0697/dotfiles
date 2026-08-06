@@ -18,6 +18,7 @@ Modern, speed-oriented stack (2026):
 | Search      | [ripgrep](https://github.com/BurntSushi/ripgrep) | grep              |
 | File finder | [fd](https://github.com/sharkdp/fd)              | find              |
 | Fuzzy finder | [fzf](https://github.com/junegunn/fzf)            | manual lookup     |
+| Multiplexer  | [zellij](https://zellij.dev)                      | tmux              |
 | AI TUI      | [opencode](https://opencode.ai)                   | —                 |
 
 Toolchain: Homebrew, Volta (Node), Go toolchain, OrbStack (Docker).
@@ -70,6 +71,10 @@ size.
 `ripgrep` (`rg`) replaces `grep`; `fd` replaces `find`. `fd` also powers fzf's
 file/dir search in `config.fish` so Ctrl-T / Alt-C respect `.gitignore`.
 
+`zellij` replaces tmux as terminal multiplexer — Catppuccin Macchiato theme
+(`config.kdl` + `themes/catppuccin.kdl`), mouse mode on, starts in locked
+mode. Launch with `zellij` and use `Ctrl-g` to unlock/bind.
+
 ## Layout
 
 ```
@@ -80,6 +85,9 @@ file/dir search in `config.fish` so Ctrl-T / Alt-C respect `.gitignore`.
 │   ├── conf.d/aliases.fish        # ld/lg/ls/eza + omz-style git abbreviations
 │   └── functions/git_main_branch.fish
 ├── starship.toml                  # Catppuccin Mocha prompt
+├── zellij/
+│   ├── config.kdl                 # Catppuccin Macchiato, mouse, locked start
+│   └── themes/catppuccin.kdl      # theme definitions
 └── opencode/
     ├── tui.json                   # theme selection
     └── themes/onehalfdark-transparent.json
@@ -98,7 +106,7 @@ lofi-wp.png                        # background image (repo root, 7.9 MB)
 
 ```sh
 # 1. Install the tools
-brew install fish starship opencode zoxide bat fzf eza ripgrep fd
+brew install fish starship opencode zoxide bat fzf eza ripgrep fd zellij
 brew install --cask ghostty
 
 # 2. Deploy configs (mirror structure matches $HOME)
@@ -112,6 +120,9 @@ cp .config/starship.toml ~/.config/starship.toml
 mkdir -p ~/.config/opencode/themes
 cp .config/opencode/tui.json ~/.config/opencode/
 cp .config/opencode/themes/onehalfdark-transparent.json ~/.config/opencode/themes/
+mkdir -p ~/.config/zellij/themes
+cp .config/zellij/config.kdl ~/.config/zellij/
+cp .config/zellij/themes/catppuccin.kdl ~/.config/zellij/themes/
 
 # 3. Set fish as default shell
 #    Add /opt/homebrew/bin/fish to /etc/shells, then:
