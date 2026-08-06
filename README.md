@@ -56,8 +56,8 @@ lofi-wp.png                        # background image (repo root, 7.9 MB)
 
 ```sh
 # 1. Install the tools
-brew install ghostty fish starship opencode
-brew install --cask ghostty   # if you prefer the app
+brew install fish starship opencode
+brew install --cask ghostty
 
 # 2. Deploy configs (mirror structure matches $HOME)
 #    cp -r .config/* ~/.config/   (or symlink individual files)
