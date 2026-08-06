@@ -18,7 +18,7 @@ Modern, speed-oriented stack (2026):
 | Search      | [ripgrep](https://github.com/BurntSushi/ripgrep) | grep              |
 | File finder | [fd](https://github.com/sharkdp/fd)              | find              |
 | Fuzzy finder | [fzf](https://github.com/junegunn/fzf)            | manual lookup     |
-| Multiplexer  | [zellij](https://zellij.dev)                      | tmux              |
+| Multiplexer  | [tmux](https://github.com/tmux/tmux)              | —                 |
 | AI TUI      | [opencode](https://opencode.ai)                   | —                 |
 
 Toolchain: Homebrew, Volta (Node), Go toolchain, OrbStack (Docker).
@@ -71,13 +71,17 @@ size.
 `ripgrep` (`rg`) replaces `grep`; `fd` replaces `find`. `fd` also powers fzf's
 file/dir search in `config.fish` so Ctrl-T / Alt-C respect `.gitignore`.
 
-`zellij` replaces tmux as terminal multiplexer — Catppuccin Macchiato theme
-(`config.kdl` + `themes/catppuccin.kdl`), mouse mode on, starts in locked
-mode. Launch with `zellij` and use `Ctrl-g` to unlock/bind.
+`tmux` is the terminal multiplexer (Catppuccin theme via TPM), configured in
+`~/.tmux.conf`.
+
+`tmux` is the terminal multiplexer (Catppuccin theme via TPM), configured in
+`~/.tmux.conf`. TPM plugins: `tmux-sensible`, catppuccin. Prefix `Ctrl-b`
+(secondary `Ctrl-s`).
 
 ## Layout
 
 ```
+.tmux.conf                         # tmux config (prefix Ctrl-b, Catppuccin theme)
 .config/
 ├── ghostty/config                 # colors, font, lofi background image
 ├── fish/
@@ -85,9 +89,6 @@ mode. Launch with `zellij` and use `Ctrl-g` to unlock/bind.
 │   ├── conf.d/aliases.fish        # ld/lg/ls/eza + omz-style git abbreviations
 │   └── functions/git_main_branch.fish
 ├── starship.toml                  # Catppuccin Mocha prompt
-├── zellij/
-│   ├── config.kdl                 # Catppuccin Macchiato, mouse, locked start
-│   └── themes/catppuccin.kdl      # theme definitions
 └── opencode/
     ├── tui.json                   # theme selection
     └── themes/onehalfdark-transparent.json
@@ -106,7 +107,8 @@ lofi-wp.png                        # background image (repo root, 7.9 MB)
 
 ```sh
 # 1. Install the tools
-brew install fish starship opencode zoxide bat fzf eza ripgrep fd zellij
+brew install fish starship opencode zoxide bat fzf eza ripgrep fd
+brew install tmux
 brew install --cask ghostty
 
 # 2. Deploy configs (mirror structure matches $HOME)
@@ -120,9 +122,7 @@ cp .config/starship.toml ~/.config/starship.toml
 mkdir -p ~/.config/opencode/themes
 cp .config/opencode/tui.json ~/.config/opencode/
 cp .config/opencode/themes/onehalfdark-transparent.json ~/.config/opencode/themes/
-mkdir -p ~/.config/zellij/themes
-cp .config/zellij/config.kdl ~/.config/zellij/
-cp .config/zellij/themes/catppuccin.kdl ~/.config/zellij/themes/
+cp .tmux.conf ~/.tmux.conf
 
 # 3. Set fish as default shell
 #    Add /opt/homebrew/bin/fish to /etc/shells, then:
@@ -133,6 +133,6 @@ chsh -s /opt/homebrew/bin/fish
 
 ## Branches
 
-- `master` — active Ghostty + fish + starship + opencode stack
-- `legacy/zsh-iTerm2` — deprecated iTerm2 / zsh / Oh My Zsh / Powerlevel10k /
-  tmux configuration (kept for reference and rollback)
+- `master` — active Ghostty + fish + starship + tmux + opencode stack
+- `legacy/zsh-iTerm2` — deprecated iTerm2 / zsh / Oh My Zsh / Powerlevel10k
+  configuration (kept for reference and rollback)
