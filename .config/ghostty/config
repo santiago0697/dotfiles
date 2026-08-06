@@ -31,7 +31,7 @@ palette = 14=#56b6c2
 palette = 15=#dcdfe4
 
 # Background image (iTerm2: ~/Pictures/lofi-wp.png, blend 0.15)
-background-image = /Users/santiago.correa@feverup.com/Pictures/lofi-wp.png
+background-image = ~/Pictures/lofi-wp.png
 background-image-opacity = 0.15
 background-image-fit = cover
 
