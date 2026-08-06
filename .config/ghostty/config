@@ -1,8 +1,10 @@
 # Migrated from iTerm2 profile "Default"
 
 # Font (iTerm2: MesloLGS-NF-Regular 13)
-font-family = "MesloLGS NF"
+# font-family = "JetBrains Mono"
+# font-family = "MesloLGS NF"
 font-size = 13
+# font-thicken = true
 
 # OneHalfDark color scheme (exact replica of iTerm2 custom preset)
 background = #282c34
@@ -29,7 +31,7 @@ palette = 14=#56b6c2
 palette = 15=#dcdfe4
 
 # Background image (iTerm2: ~/Pictures/lofi-wp.png, blend 0.15)
-background-image = /Users/santiago/Pictures/lofi-wp.png
+background-image = /Users/santiago.correa@feverup.com/Pictures/lofi-wp.png
 background-image-opacity = 0.15
 background-image-fit = cover
 
