@@ -42,7 +42,7 @@ end
 # fzf — fuzzy finder (Ctrl-T files, Ctrl-R history, Alt-C dirs) with OneHalfDark colors
 if command -v fzf >/dev/null
     fzf --fish | source
-    set -gx FZF_DEFAULT_OPTS "--color=bg:#282c34,fg:#dcdfe4,hl:#61afef,fg+:azure,hl+:blue,info:#98c379,marker:#c678dd,prompt:#61afef,spinner:#61afef,header:#dcdfe4,pointer:#c678dd,selected-bg:#474e5d,gutter:#282c34,border:#4c4c4c --height 40% --layout=reverse --border"
+    set -gx FZF_DEFAULT_OPTS "--color=bg:#282c34,fg:#dcdfe4,hl:#61afef,fg+:#ffffff,bg+:#474e5d,hl+:#61afef,info:#98c379,marker:#c678dd,prompt:#61afef,spinner:#61afef,header:#dcdfe4,pointer:#c678dd,selected-bg:#474e5d,gutter:#282c34,border:#4c4c4c --height 40% --layout=reverse --border"
     # fd-powered preview over ripgrep-less file list (respects .gitignore)
     if command -v fd >/dev/null
         set -gx FZF_DEFAULT_COMMAND "fd --type f --type d --hidden --exclude .git"
