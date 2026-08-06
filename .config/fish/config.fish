@@ -33,3 +33,8 @@ end
 if command -v zoxide >/dev/null
     zoxide init fish | source
 end
+
+# bat — cat replacement with syntax highlighting (OneHalfDark theme to match Ghostty)
+if command -v bat >/dev/null
+    set -gx BAT_THEME OneHalfDark
+end

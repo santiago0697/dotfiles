@@ -13,6 +13,7 @@ Modern, speed-oriented stack (2026):
 | Shell       | [fish](https://fishshell.com)                     | zsh               |
 | Prompt      | [starship](https://starship.rs)                   | Oh My Zsh + p10k  |
 | Navigation  | [zoxide](https://github.com/ajeetdsouza/zoxide)   | cd-based fuzzy nav |
+| File pager  | [bat](https://github.com/sharkdp/bat)             | cat               |
 | AI TUI      | [opencode](https://opencode.ai)                   | —                 |
 
 Toolchain: Homebrew, Volta (Node), Go toolchain, OrbStack (Docker).
@@ -50,13 +51,17 @@ repo's main branch via `fish/functions/git_main_branch.fish`.
 `zoxide` (loaded in `config.fish`) provides `z` (smart `cd` that learns your
 favorites), `zi` (interactive picker) and `zq`/`zoxide` (direct query).
 
+`bat` replaces `cat` (`alias cat bat` in `aliases.fish`), using the `OneHalfDark`
+theme set in `config.fish` to match Ghostty; auto-toggles line numbers off for
+pipes/redirects.
+
 ## Layout
 
 ```
 .config/
 ├── ghostty/config                 # colors, font, lofi background image
 ├── fish/
-│   ├── config.fish                # brew, PATH, volta, pnpm, orbstack, zoxide, starship
+│   ├── config.fish                # brew, PATH, volta, pnpm, orbstack, zoxide, starship, bat
 │   ├── conf.d/aliases.fish        # ld/lg + omz-style git abbreviations
 │   └── functions/git_main_branch.fish
 ├── starship.toml                  # Catppuccin Mocha prompt
@@ -78,7 +83,7 @@ lofi-wp.png                        # background image (repo root, 7.9 MB)
 
 ```sh
 # 1. Install the tools
-brew install fish starship opencode zoxide
+brew install fish starship opencode zoxide bat
 brew install --cask ghostty
 
 # 2. Deploy configs (mirror structure matches $HOME)

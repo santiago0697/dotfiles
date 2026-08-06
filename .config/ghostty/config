@@ -2,8 +2,8 @@
 
 # Font (iTerm2: MesloLGS-NF-Regular 13)
 font-family = "JetBrainsMono Nerd Font"
+font-style = "Light"
 font-size = 13
-# font-thicken = true
 
 # OneHalfDark color scheme (exact replica of iTerm2 custom preset)
 background = #282c34

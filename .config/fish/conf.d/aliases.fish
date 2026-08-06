@@ -1,6 +1,7 @@
 # Personal aliases migrated from ~/.zshrc
 alias ld lazydocker
 alias lg lazygit
+alias cat bat
 
 # Git shortcuts migrated from the oh-my-zsh git plugin (the common subset).
 # fish abbreviations expand in place when you hit space/enter, so you still
