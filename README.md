@@ -14,6 +14,7 @@ Modern, speed-oriented stack (2026):
 | Prompt      | [starship](https://starship.rs)                   | Oh My Zsh + p10k  |
 | Navigation  | [zoxide](https://github.com/ajeetdsouza/zoxide)   | cd-based fuzzy nav |
 | File pager  | [bat](https://github.com/sharkdp/bat)             | cat               |
+| Fuzzy finder | [fzf](https://github.com/junegunn/fzf)            | manual lookup     |
 | AI TUI      | [opencode](https://opencode.ai)                   | —                 |
 
 Toolchain: Homebrew, Volta (Node), Go toolchain, OrbStack (Docker).
@@ -55,13 +56,17 @@ favorites), `zi` (interactive picker) and `zq`/`zoxide` (direct query).
 theme set in `config.fish` to match Ghostty; auto-toggles line numbers off for
 pipes/redirects.
 
+`fzf` is loaded in `config.fish` with fish keybindings (Ctrl-T files, Ctrl-R
+history, Alt-C directories) and OneHalfDark colors. It also serves as zoxide's
+`zi` interactive picker.
+
 ## Layout
 
 ```
 .config/
 ├── ghostty/config                 # colors, font, lofi background image
 ├── fish/
-│   ├── config.fish                # brew, PATH, volta, pnpm, orbstack, zoxide, starship, bat
+│   ├── config.fish                # brew, PATH, volta, pnpm, orbstack, zoxide, starship, bat, fzf
 │   ├── conf.d/aliases.fish        # ld/lg + omz-style git abbreviations
 │   └── functions/git_main_branch.fish
 ├── starship.toml                  # Catppuccin Mocha prompt
@@ -83,7 +88,7 @@ lofi-wp.png                        # background image (repo root, 7.9 MB)
 
 ```sh
 # 1. Install the tools
-brew install fish starship opencode zoxide bat
+brew install fish starship opencode zoxide bat fzf
 brew install --cask ghostty
 
 # 2. Deploy configs (mirror structure matches $HOME)
