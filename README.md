@@ -14,6 +14,7 @@ Modern, speed-oriented stack (2026):
 | Prompt      | [starship](https://starship.rs)                   | Oh My Zsh + p10k  |
 | Navigation  | [zoxide](https://github.com/ajeetdsouza/zoxide)   | cd-based fuzzy nav |
 | File pager  | [bat](https://github.com/sharkdp/bat)             | cat               |
+| File listing | [eza](https://github.com/eza-community/eza)       | ls                |
 | Fuzzy finder | [fzf](https://github.com/junegunn/fzf)            | manual lookup     |
 | AI TUI      | [opencode](https://opencode.ai)                   | —                 |
 
@@ -60,6 +61,10 @@ pipes/redirects.
 history, Alt-C directories) and OneHalfDark colors. It also serves as zoxide's
 `zi` interactive picker.
 
+`eza` replaces `ls` (`aliases.fish`): `ls` = directories-first, `ll` = long
+list with icons, `la` = all + long with icons, `lt` = tree, `lS` = sorted by
+size.
+
 ## Layout
 
 ```
@@ -67,7 +72,7 @@ history, Alt-C directories) and OneHalfDark colors. It also serves as zoxide's
 ├── ghostty/config                 # colors, font, lofi background image
 ├── fish/
 │   ├── config.fish                # brew, PATH, volta, pnpm, orbstack, zoxide, starship, bat, fzf
-│   ├── conf.d/aliases.fish        # ld/lg + omz-style git abbreviations
+│   ├── conf.d/aliases.fish        # ld/lg/ls/eza + omz-style git abbreviations
 │   └── functions/git_main_branch.fish
 ├── starship.toml                  # Catppuccin Mocha prompt
 └── opencode/
@@ -88,7 +93,7 @@ lofi-wp.png                        # background image (repo root, 7.9 MB)
 
 ```sh
 # 1. Install the tools
-brew install fish starship opencode zoxide bat fzf
+brew install fish starship opencode zoxide bat fzf eza
 brew install --cask ghostty
 
 # 2. Deploy configs (mirror structure matches $HOME)

@@ -3,6 +3,13 @@ alias ld lazydocker
 alias lg lazygit
 alias cat bat
 
+# eza — modern ls replacement
+alias ls "eza --group-directories-first"
+alias ll "eza -l --icons --group-directories-first"
+alias la "eza -la --icons --group-directories-first"
+alias lt "eza --tree --icons --level=2"
+alias lS "eza -l --sort=size --icons --group-directories-first"
+
 # Git shortcuts migrated from the oh-my-zsh git plugin (the common subset).
 # fish abbreviations expand in place when you hit space/enter, so you still
 # see the real command. Remove any you don't want, or the whole file.
