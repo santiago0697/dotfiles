@@ -20,14 +20,31 @@ All wired up in `~/.config/fish/config.fish` (replaces `.zprofile` /
 
 ### Look & feel
 
-Everything uses a OneHalfDark palette, so the terminal, the prompt and the
-opencode TUI all blend together:
-
-- Terminal colors, background image + blending: `~/.config/ghostty/config`
-- Powerlevel10k "rainbow" recreation in starship: `~/.config/starship.toml`
-  (segments: blue directory block, green git block, right side node/go/python)
+- Terminal (OneHalfDark palette), background image + blending:
+  `~/.config/ghostty/config`
+- Prompt: Catppuccin Mocha powerline preset in starship
+  (`~/.config/starship.toml`), with `cmd_duration.show_notifications = false`
+  — the macOS notification call blocked the prompt ~2s after any >45s command
 - opencode theme: `.config/opencode/themes/onehalfdark-transparent.json`
   (transparent chat pane, opaque dialogs), selected via `tui.json`
+
+### Shell speed
+
+- `~/.gitconfig` (not committed) enables git perf settings globally, so the
+  `git status` starship runs on every prompt is ~50ms even in huge repos.
+  The fsmonitor daemon auto-starts per repo on the first git command:
+
+  ```sh
+  git config --global core.fsmonitor true
+  git config --global core.untrackedCache true
+  ```
+
+### Aliases
+
+`fish/conf.d/aliases.fish` carries `ld`/`lg` (lazydocker/lazygit) plus the
+common oh-my-zsh git-plugin shortcuts (`gst`, `gco`, `gcb`, `gp`, `glog`, …)
+as fish abbreviations. `gcm`/`grbm`/`gpsup` are functions that detect the
+repo's main branch via `fish/functions/git_main_branch.fish`.
 
 ## Layout
 
@@ -35,9 +52,10 @@ opencode TUI all blend together:
 .config/
 ├── ghostty/config                 # colors, font, lofi background image
 ├── fish/
-│   ├── config.fish                # brew, PATH, volta, orbstack, starship init
-│   └── functions/fish_right_prompt.fish
-├── starship.toml                  # left/right prompt definitions
+│   ├── config.fish                # brew, PATH, volta, pnpm, orbstack, starship init
+│   ├── conf.d/aliases.fish        # ld/lg + omz-style git abbreviations
+│   └── functions/git_main_branch.fish
+├── starship.toml                  # Catppuccin Mocha prompt
 └── opencode/
     ├── tui.json                   # theme selection
     └── themes/onehalfdark-transparent.json
@@ -63,7 +81,9 @@ brew install --cask ghostty
 #    cp -r .config/* ~/.config/   (or symlink individual files)
 cp .config/ghostty/config ~/.config/ghostty/config
 cp .config/fish/config.fish ~/.config/fish/config.fish
-cp .config/fish/functions/fish_right_prompt.fish ~/.config/fish/functions/
+mkdir -p ~/.config/fish/conf.d ~/.config/fish/functions
+cp .config/fish/conf.d/aliases.fish ~/.config/fish/conf.d/
+cp .config/fish/functions/git_main_branch.fish ~/.config/fish/functions/
 cp .config/starship.toml ~/.config/starship.toml
 mkdir -p ~/.config/opencode/themes
 cp .config/opencode/tui.json ~/.config/opencode/
