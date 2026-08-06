@@ -12,11 +12,12 @@ Modern, speed-oriented stack (2026):
 | Terminal    | [Ghostty](https://ghostty.org)                    | iTerm2            |
 | Shell       | [fish](https://fishshell.com)                     | zsh               |
 | Prompt      | [starship](https://starship.rs)                   | Oh My Zsh + p10k  |
+| Navigation  | [zoxide](https://github.com/ajeetdsouza/zoxide)   | cd-based fuzzy nav |
 | AI TUI      | [opencode](https://opencode.ai)                   | —                 |
 
 Toolchain: Homebrew, Volta (Node), Go toolchain, OrbStack (Docker).
-All wired up in `~/.config/fish/config.fish` (replaces `.zprofile` /
-`.zshenv` / `/etc/paths.d`). Font: **MesloLGS NF** (13pt).
+All wired up in `~/.config/fish/config.fish` (see below). Font: **JetBrainsMono
+Nerd Font** (13pt).
 
 ### Look & feel
 
@@ -46,13 +47,16 @@ common oh-my-zsh git-plugin shortcuts (`gst`, `gco`, `gcb`, `gp`, `glog`, …)
 as fish abbreviations. `gcm`/`grbm`/`gpsup` are functions that detect the
 repo's main branch via `fish/functions/git_main_branch.fish`.
 
+`zoxide` (loaded in `config.fish`) provides `z` (smart `cd` that learns your
+favorites), `zi` (interactive picker) and `zq`/`zoxide` (direct query).
+
 ## Layout
 
 ```
 .config/
 ├── ghostty/config                 # colors, font, lofi background image
 ├── fish/
-│   ├── config.fish                # brew, PATH, volta, pnpm, orbstack, starship init
+│   ├── config.fish                # brew, PATH, volta, pnpm, orbstack, zoxide, starship
 │   ├── conf.d/aliases.fish        # ld/lg + omz-style git abbreviations
 │   └── functions/git_main_branch.fish
 ├── starship.toml                  # Catppuccin Mocha prompt
@@ -74,7 +78,7 @@ lofi-wp.png                        # background image (repo root, 7.9 MB)
 
 ```sh
 # 1. Install the tools
-brew install fish starship opencode
+brew install fish starship opencode zoxide
 brew install --cask ghostty
 
 # 2. Deploy configs (mirror structure matches $HOME)

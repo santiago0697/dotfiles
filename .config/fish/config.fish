@@ -28,3 +28,8 @@ end
 if status is-interactive
     starship init fish | source
 end
+
+# zoxide — smart cd (z/zoxide, replaces cd-based fuzzy navigation)
+if command -v zoxide >/dev/null
+    zoxide init fish | source
+end
