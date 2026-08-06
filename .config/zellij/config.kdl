@@ -5,8 +5,8 @@ theme "catppuccin-macchiato"
 // Mouse support (tmux had no mouse; zellij defaults off)
 mouse_mode true
 
-// Start in locked mode to avoid accidentally triggering a pane mode
-default_mode "locked"
+// Default mode: normal (unlocked) — actions work on first keypress, no Ctrl+g gate
+default_mode "normal"
 
 // Switch tabs with Shift+Left/Right arrow (like tmux S-Left/S-Right)
 keybinds {
