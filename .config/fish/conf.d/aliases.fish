@@ -5,10 +5,23 @@ alias cat bat
 
 # eza — modern ls replacement
 alias ls "eza --group-directories-first"
-alias ll "eza -l --icons --group-directories-first"
-alias la "eza -la --icons --group-directories-first"
-alias lt "eza --tree --icons --level=2"
-alias lS "eza -l --sort=size --icons --group-directories-first"
+
+# Long listings page through less when they overflow the screen (like bat):
+# j/k scroll, /pattern search, &pattern filter to matching lines, q quit.
+# LESSUTFCHARDEF marks the Private Use Area printable so Nerd Font icons
+# render instead of <U+XXXX> placeholders.
+set -gx LESSUTFCHARDEF "E000-F8FF:p,F0000-FFFFD:p"
+function _eza_paged
+    if isatty stdout
+        eza --color=always --icons=always $argv | less -RFX
+    else
+        eza $argv
+    end
+end
+alias ll "_eza_paged -l --group-directories-first"
+alias la "_eza_paged -la --group-directories-first"
+alias lt "_eza_paged --tree --level=2"
+alias lS "_eza_paged -l --sort=size --group-directories-first"
 
 # Git shortcuts migrated from the oh-my-zsh git plugin (the common subset).
 # fish abbreviations expand in place when you hit space/enter, so you still
